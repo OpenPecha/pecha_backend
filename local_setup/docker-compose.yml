@@ -2,11 +2,11 @@ version: '3.8'
 services:
   db-local:
     image: postgres:16-alpine
-    container_name: pecha-db
+    container_name: pecha-database
     restart: always
     environment:
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=pechaAdmin
       - POSTGRES_DB=pecha
     logging:
       options:
@@ -15,6 +15,6 @@ services:
     ports:
       - "5434:5432"
     volumes:
-      - ./data/db-local:/var/lib/postgresql/data
+      - ./data/database-local:/var/lib/postgresql/data
 volumes:
   dbdata6:
