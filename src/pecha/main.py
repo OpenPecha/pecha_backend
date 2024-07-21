@@ -2,7 +2,7 @@ import uvicorn
 from starlette import status
 from fastapi import FastAPI, HTTPException,Response
 
-from users import user_views
+from users import views
 
 api = FastAPI(
     title="Pecha API",
@@ -11,7 +11,7 @@ api = FastAPI(
     openapi_url="/docs/openapi.json",
     redoc_url="/docs"
 )
-api.include_router(user_views.router)
+api.include_router(views.user_router)
 
 
 
