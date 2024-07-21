@@ -1,12 +1,23 @@
+from typing import List
 from _datetime import datetime
 import _datetime
-from typing import List
 
-from pydantic import BaseModel
-
+from pydantic import BaseModel, EmailStr, constr
 from database.core import Base
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
 
+
+class CreateUserRequest(BaseModel):
+    first_name: str
+    last_name: str
+    username: str
+    email: str
+    password: str
+
+
+class UserLoginRequest(BaseModel):
+    email: EmailStr
+    password: constr(min_length=8, max_length=20)
 
 
 class Users(Base):
@@ -35,16 +46,13 @@ class UserDTO(BaseModel):
         from_attributes = True
 
 
-class CreateUserRequest(BaseModel):
-    first_name: str
-    last_name: str
-    username: str
-    email: str
-    password: str
-
-
 class PaginatedUsersResponse(BaseModel):
     per_page: int
     page: int
     total: int
     users: List[UserDTO]
+
+
+class UserLoginResponse(BaseModel):
+    token: str
+    token_type: str

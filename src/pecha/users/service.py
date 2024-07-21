@@ -2,11 +2,10 @@ import jwt
 from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 
-from auth.models import UserLoginRequest, UserLoginResponse
 from config import PECHA_JWT_SECRET, PECHA_JWT_ALG, PECHA_JWT_ISSUER, PECHA_JWT_AUD, PECHA_JWT_EXP
 from database.core import SessionLocal
 from . import repository
-from users.models import PaginatedUsersResponse, UserDTO, CreateUserRequest, Users
+from users.models import PaginatedUsersResponse, UserDTO, CreateUserRequest, Users, UserLoginRequest, UserLoginResponse
 from starlette import status
 from passlib.context import CryptContext
 from datetime import timezone, datetime, timedelta

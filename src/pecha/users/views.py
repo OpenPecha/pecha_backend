@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic.v1 import ValidationError
 from starlette import status
 
-from auth.models import UserLoginResponse, UserLoginRequest
+from users.models import UserLoginResponse, UserLoginRequest
 from models import ErrorMessage
 from .models import PaginatedUsersResponse, CreateUserRequest
 from .service import get_active_users, create_user, get_user_by_email, authenticate_and_generate_token
